@@ -1,5 +1,5 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Poročilo pri predmetu Analiza podatkov s programom R!"
 author: "Študent FMF"
 output:
   html_document: default
