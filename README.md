@@ -15,7 +15,7 @@ V tej tabeli bom ugotavljala, kako se število štipendistov razlikuje med slove
 Iz sledeče spletne strani pa bom oblikovala 2 tabeli: http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2
 Prva bo vsebovala podatke o številu študentov, ki so med leti 2008 in 2011 prejemali določeno vrsto štipendije (kadrovske, državne, Zoisove, druge), druga pa o številu dijakov. Tu pa bom kadrovske štipendije hierarhično razdelila še na vrsto financiranja (sofinancirane posredno, sofinancirane neposredno, nesofinancirane). 
 
-Poleg podatkov v obliki HTML imam tudi Excelove tabele. Te v stolpcih vsebujejo leta (2010-2016), število prejemnikov, ki je ločeno na dijake in študente, povprečna štipendija in sredstva, ki jih je država namenila štipenditorjem.
+Poleg podatkov v obliki .csv imam tudi Excelove tabele. Te v stolpcih vsebujejo leta (2010-2016), število prejemnikov, ki je ločeno na dijake in študente, povprečna štipendija in sredstva, ki jih je država namenila štipenditorjem.
 S to tabelo pa bom ugotavljala ali je višina štipendije odvisna od sredstev, ki jih nameni država ali od števila štipendistov.
 
 
