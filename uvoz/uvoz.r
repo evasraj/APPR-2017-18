@@ -60,15 +60,23 @@ kadrovske.neposredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, rang
 
 
 
-
-uvozi.pokrajine <- function() {
-  PO  <- read.csv2("podatki/pokrajine.csv",col_names = c("pokrajina", "stipenditor","vrsta_stipendije", 2008:2011),
-                   skip = 2, n_max = 250, NA = "-",sep =";", header = TRUE,
-                   locale= locale(encoding = "Windows-1250"), fileEncoding = "utf-8")
+uvozi.pokrajine <-function() {
+  PO  <- read.csv2("podatki/pokrajine.csv", sep = ";", as.is = TRUE,
+                   na.strings = "-", header = FALSE,
+                   fileEncoding = "Windows-1250",
+                   skip = 3)
+  colnames(PO)[1:2] <- c("pokrajina", "stipenditor")
+ % PO <- PO %>% melt(id.vars = c("pokrajina", "spol"), variable.name = "leto",
+                        value.name = "stevilo")
+  % PO$leto <- parse_number(PO$leto)
+  % PO$pokrajina <- factor(PO$regija)
+  % PO$spol <- factor(PO$spol)
+  % return(PO)
   
 }
-
-
+  
+  
+  
 # Zapišimo podatke v razpredelnico obcine
 obcine <- uvozi.obcine()
 

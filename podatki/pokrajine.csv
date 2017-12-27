@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "Študenti in dijaki štipendisti po: REGIJA ŠTIPENDITORJA, ŠTIPENDISTI,"
 "VRSTA ŠTIPENDIJE, LETO , MERITVE"
 
@@ -246,3 +247,253 @@
 "je opisana teritorialna sprememba upoštevana pri teritorialnem "
 "razvršèanju enot za statistiène namene.  "
 
+=======
+"Študenti in dijaki štipendisti po: REGIJA ŠTIPENDITORJA, ŠTIPENDISTI,"
+"VRSTA ŠTIPENDIJE, LETO , MERITVE"
+
+" ";" ";" ";"2008";"2009";"2010";"2011"
+" ";" ";" ";"Število";"Število";"Število";"Število"
+"Pomurska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";68;76;10;7
+" ";" ";"Kadrovske štipendije sofinancirane posredno";50;63;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;1;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";18;12;10;7
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";157;104;63;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";153;158;43;37
+" ";" ";"Kadrovske štipendije sofinancirane posredno";94;101;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;4;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";59;53;43;37
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";259;195;122;73
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Podravska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";197;199;123;125
+" ";" ";"Kadrovske štipendije sofinancirane posredno";31;36;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;2;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";166;161;123;125
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";526;331;168;2
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";1;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";430;411;312;284
+" ";" ";"Kadrovske štipendije sofinancirane posredno";21;20;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;18;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";409;373;312;284
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";898;691;427;257
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";8;-;-;-
+"Koroška"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";83;78;14;15
+" ";" ";"Kadrovske štipendije sofinancirane posredno";58;61;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;-;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";25;17;14;15
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";-;-;-;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";154;139;45;42
+" ";" ";"Kadrovske štipendije sofinancirane posredno";81;84;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;1;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";73;54;45;42
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";-;-;-;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";4;-;-;-
+"Savinjska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";560;394;230;217
+" ";" ";"Kadrovske štipendije sofinancirane posredno";52;48;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;8;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";508;338;230;217
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";599;384;199;2
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";602;424;294;220
+" ";" ";"Kadrovske štipendije sofinancirane posredno";100;87;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;29;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";502;308;294;220
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";908;684;432;255
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Zasavska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";33;38;10;11
+" ";" ";"Kadrovske štipendije sofinancirane posredno";11;15;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;-;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";22;23;10;11
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";95;61;33;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";151;133;73;81
+" ";" ";"Kadrovske štipendije sofinancirane posredno";25;31;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;-;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";126;102;73;81
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";161;126;75;51
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Spodnjeposavska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";54;48;10;10
+" ";" ";"Kadrovske štipendije sofinancirane posredno";33;39;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;-;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";21;9;10;10
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";123;70;34;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";158;170;57;54
+" ";" ";"Kadrovske štipendije sofinancirane posredno";87;101;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;1;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";71;68;57;54
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";200;158;92;60
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Jugovzhodna Slovenija"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";164;158;55;50
+" ";" ";"Kadrovske štipendije sofinancirane posredno";60;70;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;2;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";104;86;55;50
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";244;144;70;1
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";260;238;152;115
+" ";" ";"Kadrovske štipendije sofinancirane posredno";59;67;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;11;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";201;160;152;115
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";361;277;192;117
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Osrednjeslovenska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";886;933;823;1100
+" ";" ";"Kadrovske štipendije sofinancirane posredno";26;31;-;477
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";223;290;262;152
+" ";" ";"Kadrovske štipendije nesofinancirane";637;612;561;471
+" ";" ";"Državne štipendije";21468;25206;26313;31136
+" ";" ";"Zoisove štipendije";3165;4891;5451;6041
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;1
+" ";" ";"Druge štipendije";118;23;19;36
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";1578;1645;1326;1775
+" ";" ";"Kadrovske štipendije sofinancirane posredno";20;30;-;735
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";205;349;356;256
+" ";" ";"Kadrovske štipendije nesofinancirane";1353;1266;970;784
+" ";" ";"Državne štipendije";12532;14974;16212;20149
+" ";" ";"Zoisove štipendije";3271;4541;4915;5234
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";92;130;144;170
+" ";" ";"Druge štipendije";308;129;1174;262
+"Gorenjska"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";329;200;661;117
+" ";" ";"Kadrovske štipendije sofinancirane posredno";63;44;522;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;4;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";266;152;139;117
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";440;273;147;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";341;212;884;139
+" ";" ";"Kadrovske štipendije sofinancirane posredno";59;47;720;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;12;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";282;153;164;139
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";578;428;276;182
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Notranjsko-kraška"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";136;92;20;14
+" ";" ";"Kadrovske štipendije sofinancirane posredno";83;64;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;4;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";53;24;20;14
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";-;-;-;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";87;71;42;35
+" ";" ";"Kadrovske štipendije sofinancirane posredno";47;29;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;6;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";40;36;42;35
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";-;-;-;-
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+"Goriška"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";224;138;58;44
+" ";" ";"Kadrovske štipendije sofinancirane posredno";85;19;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;45;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";139;74;58;44
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";201;132;65;1
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";6;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";312;321;124;95
+" ";" ";"Kadrovske štipendije sofinancirane posredno";81;134;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;60;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";231;127;124;95
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";327;258;178;112
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";15;-;-;-
+"Obalno-kraška"
+" ";"Dijaki"
+" ";" ";"Kadrovske štipendije - Skupaj";100;86;59;45
+" ";" ";"Kadrovske štipendije sofinancirane posredno";21;21;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;-;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";79;65;59;45
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";157;103;67;1
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+" ";"Študentje"
+" ";" ";"Kadrovske štipendije - Skupaj";133;145;96;89
+" ";" ";"Kadrovske štipendije sofinancirane posredno";37;52;-;-
+" ";" ";"Kadrovske štipendije sofinancirane neposredno";-;1;-;-
+" ";" ";"Kadrovske štipendije nesofinancirane";96;92;96;89
+" ";" ";"Državne štipendije";-;-;-;-
+" ";" ";"Zoisove štipendije";307;220;134;95
+" ";" ";"Štipendije za Slovence v zamejstvu in po svetu";-;-;-;-
+" ";" ";"Druge štipendije";-;-;-;-
+
+"Med druge štipendije so zajete tudi štipendije sklada Ad futura, ki "
+"vkljuèujejo tudi del šolnine, v letu 2010 pa tudi štipendije Erasmus."
+
+"Podatki so teritorialno razvršèeni po Klasifikaciji statistiènih "
+"teritorialnih enot v Evropski uniji (The Classification  of "
+"Territorial Units for Statistics) – NUTS ((seznam "
+"HREF=../database/Meta/Klas/NUTS.htm TARGET=_blank) opis in "
+"pojasnila), raven NUTS 3. "
+"Opombe o spremembah posameznih regij so zapisane k vsaki spremenjeni "
+"regiji in so ob izpisu tabele na zaslon dostopne s klikom na ikono za "
+"opombe (zvezdica). V opombah je na zaèetku naveden datum, s katerim "
+"je opisana teritorialna sprememba upoštevana pri teritorialnem "
+"razvršèanju enot za statistiène namene.  "
+
+>>>>>>> 3905eb8560042f7aa094ba7d6fffe322439c9c5b
