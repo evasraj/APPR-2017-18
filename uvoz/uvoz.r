@@ -41,6 +41,34 @@ uvozi.druzine <- function(obcine) {
   return(data)
 }
 
+link <- "http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije"
+stran <- html_session(link,
+                      add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
+tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
+  .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
+  sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
+
+MANJKAAAAA
+
+
+
+drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
+zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26")
+deficitarni.poklici <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A1:F3")
+kadrovske.posredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, range = "A1:F6")
+kadrovske.neposredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, range = "A12:F19")
+
+
+
+
+uvozi.pokrajine <- function() {
+  PO  <- read.csv2("podatki/pokrajine.csv",col_names = c("pokrajina", "stipenditor","vrsta_stipendije", 2008:2011),
+                   skip = 2, n_max = 250, NA = "-",sep =";", header = TRUE,
+                   locale= locale(encoding = "Windows-1250"), fileEncoding = "utf-8")
+  
+}
+
+
 # Zapišimo podatke v razpredelnico obcine
 obcine <- uvozi.obcine()
 
