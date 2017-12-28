@@ -72,18 +72,6 @@ zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26"
 deficitarni.poklici <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A1:F3")
 kadrovske.posredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, range = "A1:F6")
 kadrovske.neposredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, range = "A12:F19")
-
-
-
-uvozi.pokrajine <-function() {
-  PO  <- read.csv2("podatki/pokrajine.csv", sep = ";", as.is = TRUE,
-                   na.strings = "-", header = FALSE,
-                   fileEncoding = "Windows-1250" ,
-                   skip = 3)
-
-}
-  
-  
   
 # Zapišimo podatke v razpredelnico obcine
 dijaki <- uvozi.dijaki()
@@ -97,18 +85,13 @@ druzine <- uvozi.druzine(levels(obcine$obcina))
 # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
 # fazah.
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.pokrajina <- function() {
-  data <- read_csv2("podatki/pokrajine.csv", skip = 4, n_max = 484,
-                    locale = locale(encoding = "UTF-8")) %>% fill(1) %>% drop_na(2)
-  colnames(data)[1:3] <- c("pokrjina", "stipenditor", "stipendija")
-  data <- data %>% melt(id.vars = c("pokrajina", "stipenditor"), variable.name = "stipendija",
-                        value.name = "leto")
-  data$leto <- parse_number(data$leto)
-  data$pokrajina <- factor(data$pokrajina)
-  data$stipenditor <- factor(data$stipenditor)
-  data$stipendija <- factor(data$stipendija)
+uvozi.pokrajine <-function() {
+  data  <- read.csv2("podatki/pokrajine.csv", sep = ";", as.is = TRUE,
+                   na.strings = "-",
+                   fileEncoding = "Windows-1250" ,
+                   skip = 5)
+  colnames(data) <- c("regija", "stipenditor", "stipendija", 2008:2011)
   return(data)
 }
 
-pokrajina <- uvozi.pokrajina()
+pokrajine <- uvozi.pokrajine()
