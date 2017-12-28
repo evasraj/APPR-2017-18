@@ -48,8 +48,6 @@ tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
   .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
   sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
 
-MANJKA!!!
-
 
 drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
 zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26")
