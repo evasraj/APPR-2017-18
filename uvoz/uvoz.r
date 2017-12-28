@@ -41,13 +41,31 @@ uvozi.druzine <- function(obcine) {
   return(data)
 }
 
-link <- "http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije"
-stran <- html_session(link,
-                      add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
-tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
-  .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
-  sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
 
+uvozi.dijaki <- function() {
+  link <- "http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije"
+  stran <- html_session(link,
+                        add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
+  tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
+    .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
+    sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
+  colnames(tabela) <- c("leto", "kadrovska", "drzavna", "zoisova", "druge")
+  return(tabela)
+}
+
+# Funkcija, ki uvozi podatke iz datoteke druzine.csv
+uvozi.druzine <- function(obcine) {
+  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
+                    locale = locale(encoding = "Windows-1250"))
+  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
+    strapplyc("([^ ]+)") %>% sapply(paste, collapse = " ") %>% unlist()
+  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
+  data <- data %>% melt(id.vars = "obcina", variable.name = "velikost.druzine",
+                        value.name = "stevilo.druzin")
+  data$velikost.druzine <- parse_number(data$velikost.druzine)
+  data$obcina <- factor(data$obcina, levels = obcine)
+  return(data)
+}
 
 drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
 zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26")
@@ -62,24 +80,13 @@ uvozi.pokrajine <-function() {
                    na.strings = "-", header = FALSE,
                    fileEncoding = "Windows-1250" ,
                    skip = 3)
-  
-  
-  
-  
-  colnames(PO)[1:2] <- c("pokrajina", "stipenditor")
- % PO <- PO %>% melt(id.vars = c("pokrajina", "spol"), variable.name = "leto",
-                        value.name = "stevilo")
-  % PO$leto <- parse_number(PO$leto)
-  % PO$pokrajina <- factor(PO$regija)
-  % PO$spol <- factor(PO$spol)
-  % return(PO)
-  
+
 }
   
   
   
 # Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+dijaki <- uvozi.dijaki()
 
 # Zapišimo podatke v razpredelnico druzine.
 druzine <- uvozi.druzine(levels(obcine$obcina))
@@ -89,3 +96,19 @@ druzine <- uvozi.druzine(levels(obcine$obcina))
 # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
 # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
 # fazah.
+
+# Funkcija, ki uvozi podatke iz datoteke druzine.csv
+uvozi.pokrajina <- function() {
+  data <- read_csv2("podatki/pokrajine.csv", skip = 4, n_max = 484,
+                    locale = locale(encoding = "UTF-8")) %>% fill(1) %>% drop_na(2)
+  colnames(data)[1:3] <- c("pokrjina", "stipenditor", "stipendija")
+  data <- data %>% melt(id.vars = c("pokrajina", "stipenditor"), variable.name = "stipendija",
+                        value.name = "leto")
+  data$leto <- parse_number(data$leto)
+  data$pokrajina <- factor(data$pokrajina)
+  data$stipenditor <- factor(data$stipenditor)
+  data$stipendija <- factor(data$stipendija)
+  return(data)
+}
+
+pokrajina <- uvozi.pokrajina()
