@@ -62,8 +62,12 @@ kadrovske.neposredne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 4, rang
 uvozi.pokrajine <-function() {
   PO  <- read.csv2("podatki/pokrajine.csv", sep = ";", as.is = TRUE,
                    na.strings = "-", header = FALSE,
-                   fileEncoding = "Windows-1250",
+                   fileEncoding = "Windows-1250" ,
                    skip = 3)
+  
+  
+  
+  
   colnames(PO)[1:2] <- c("pokrajina", "stipenditor")
  % PO <- PO %>% melt(id.vars = c("pokrajina", "spol"), variable.name = "leto",
                         value.name = "stevilo")
