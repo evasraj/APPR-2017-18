@@ -4,12 +4,9 @@ sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 
 # Funkcija, ki uvozi število dijakov glede na leto in vrsto štipendije
 uvozi.dijaki <- function() {
-  
   link <- "http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije"
-  
   stran <- html_session(link,
                         add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
-  
   tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
     .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
     sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
@@ -21,7 +18,6 @@ uvozi.dijaki <- function() {
 
 # Zapišimo podatke v razpredelnico dijaki
 dijaki <- uvozi.dijaki()
-
 
 # Funkcija, ki uvozi stevilo stipendistov glede na leto
 uvozi.stipendist <- function(){
@@ -54,15 +50,13 @@ stipendisti <- uvozi.stipendist()
 
 # Funkcija, ki uvozi število štipendistov glede na pokrajine Slovenije
 uvozi.pokrajine <- function() {
-  
   data <- read_csv2("podatki/pokrajine.csv", trim_ws = TRUE, na = c("-", ""),
                     locale = locale(encoding = "Windows-1250"), skip = 6,
-                    col_names = c("regija", "stipenditor", "stipendija", 2008:2011), n_max = 234) %>%
+                    col_names = c("regija", "stipenditor", "stipendija", 2008:2011)) %>%
     fill(1:2) %>% drop_na(3) %>% filter(! grepl("Skupaj", stipendija)) %>%
     melt(id.vars = c("regija", "stipenditor", "stipendija"),
          variable.name = "leto", value.name = "stevilo") %>%
     mutate(leto = parse_number(leto), stevilo = parse_number(stevilo))
-  
   return(data)
 }
 
