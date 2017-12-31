@@ -48,6 +48,7 @@ uvozi.stipendist <- function(){
 # Zapišimo podatke v razpredelnico stipendist
 stipendisti <- uvozi.stipendist()
 
+
 # Funkcija, ki uvozi število štipendistov glede na pokrajine Slovenije
 uvozi.pokrajine <- function() {
   data <- read_csv2("podatki/pokrajine.csv", trim_ws = TRUE, na = c("-", ""),

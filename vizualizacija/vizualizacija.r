@@ -17,10 +17,6 @@ print(graf2)
 
 
 
-  
-  
-
-
 # RISANJE 
 #
 # Za risanje bomo uporabili knjižnico `ggplot2`. Pri delu s podatki si bomo
