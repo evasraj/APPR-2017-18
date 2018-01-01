@@ -39,7 +39,7 @@ povprecja <- druzine %>% group_by(obcina) %>%
   summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 
-# RISANJE 
+#  RISANJE 
 #
 # Za risanje bomo uporabili knjižnico `ggplot2`. Pri delu s podatki si bomo
 # pomagali še s knjižnico `dplyr`.
