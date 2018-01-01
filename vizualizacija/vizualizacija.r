@@ -1,20 +1,42 @@
 # 3. faza: Vizualizacija podatkov
 
+# graf števila dijakov glede na vrsto štipendije po letih
 graf1 <- ggplot(dijaki, aes(x = leto, y = stevilo, color = stipendija)) +
-  xlab("Leto") + ylab("Število")+
   geom_line(size = 1) +
   geom_point(size = 1.5) +
+  xlab("Leto") + ylab("Število") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) + 
-    ggtitle("Število dijakov glede na vrsto štipendije po letih")
-print(graf1)
+  ggtitle("Število dijakov glede na vrsto štipendije po letih")
 
-graf2 <- ggplot(stipendisti, aes(x = leto, y = stevilo, color = stipendisti)) +
-  geom_bar(stat = "identity") +
+# graf števila štipendistov glede na leto (za vse štipendije skupaj)
+graf2 <- ggplot(stipendisti, aes(x = factor(leto), y = stevilo, fill = stipendisti)) +
+  geom_bar(stat = "identity", position = "dodge") +
   xlab("Leto") + ylab("Število") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  ggtitle("Število štipendistov glede na leto" )
-print(graf2)
+  ggtitle("Število štipendistov glede na leto")
 
+# graf povprečne višine štipendije po letih
+graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +
+  geom_line(size = 1) +
+  geom_point(size = 1.5) +
+  xlab("Leto") + ylab("Povprečna višina") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5), 
+        panel.grid.major = element_line(linetype = "dotted"), 
+        panel.grid.minor = element_line(linetype = "dotted")) + 
+  ggtitle("Povprečna višina štipendije po letih")
+print(graf3)
+
+# Uvozimo zemljevid.
+zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels = levels(obcine$obcina))
+zemljevid <- pretvori.zemljevid(zemljevid)
+
+# Izračunamo povprečno velikost družine
+povprecja <- druzine %>% group_by(obcina) %>%
+  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 
 # RISANJE 
