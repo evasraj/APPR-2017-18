@@ -34,7 +34,7 @@ zemljevid <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2.8/shp/SVN_adm
                              "SVN_adm1", encoding = "UTF-8")
 
 zdruzitev.stipendij <- pokrajine %>% group_by(leto, regija) %>% summarise(stevilo = sum(stevilo, na.rm = TRUE)/2)
-#povprečje štipendij na leto glede na pokrajine
+#povprecje stipendij na leto glede na pokrajine
 povprecje <- zdruzitev.stipendij %>% group_by(regija) %>% summarise(povprecje = round(sum(stevilo)/4))
 
 zemljevid.povprecij <- ggplot() +
