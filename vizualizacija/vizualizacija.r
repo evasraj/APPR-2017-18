@@ -31,14 +31,16 @@ print(graf3)
 # Uvozimo zemljevid
 gpclibPermit()
 zemljevid <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2.8/shp/SVN_adm_shp.zip",
-                             "SVN_adm1", encoding = "UTF-8")
+                             "SVN_adm1", encoding = "UTF-8") %>% pretvori.zemljevid()
 
 zdruzitev.stipendij <- pokrajine %>% group_by(leto, regija) %>% summarise(stevilo = sum(stevilo, na.rm = TRUE)/2)
 #povprecje stipendij na leto glede na pokrajine
-povprecje <- zdruzitev.stipendij %>% group_by(regija) %>% summarise(povprecje = round(sum(stevilo)/4))
+povprecje <- zdruzitev.stipendij %>% group_by(regija) %>% summarise(povprecje = mean(stevilo))
 
 zemljevid.povprecij <- ggplot() +
-  geom_polygon(data = povprecje %>%
-                 mutate(zemljevid@data[["NAME_1"]] = parse_factor(regija, levels(zemljevid$zemljevid@data[["NAME_1"]]))) %>%
-                 group_by(zemljevid@data[["NAME_1"]]) %>% summarise(povprecje = sum(povprecje)) %>%
-                 right_join(zemljevid))
+  geom_polygon(data = povprecje %>% right_join(zemljevid, by = c("regija" = "NAME_1")),
+               aes(x = long, y = lat, group = group, fill = povprecje))
+
+
+
+
