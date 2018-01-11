@@ -19,7 +19,7 @@ uvozi.dijaki <- function() {
 # Zapišimo podatke v razpredelnico dijaki
 dijaki <- uvozi.dijaki()
 
-# Funkcija, ki uvozi stevilo stipendistov glede na leto
+# Funkcija, ki uvozi število štipendistov glede na leto
 uvozi.stipendist <- function(){
   drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
   zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26")
