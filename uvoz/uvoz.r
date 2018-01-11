@@ -76,7 +76,7 @@ uvozi.pokrajine_dijaki <- function() {
   return(data)
 }
 pokrajine_dijaki <- uvozi.pokrajine_dijaki()
-pokrajine_dijaki <- gather(pokrajine_dijaki, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "dijaki")
+pokrajine_dijaki <- gather(pokrajine_dijaki, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "odstotek")
 
 uvozi.pokrajine_studenti <- function() {
   data <- read_csv2("podatki/pokrajine_studenti.csv", trim_ws = TRUE, na = c("-", ""),
@@ -85,10 +85,9 @@ uvozi.pokrajine_studenti <- function() {
   return(data)
 }
 pokrajine_studenti <- uvozi.pokrajine_studenti()
-pokrajine_studenti <- gather(pokrajine_studenti, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "studenti")
+pokrajine_studenti <- gather(pokrajine_studenti, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "odstotek")
 
-# pokrajine_skupaj <- inner_join(pokrajine_dijaki, pokrajine_studenti, by = c("leto", "regija"))
-
+pokrajine_skupaj <- inner_join(pokrajine_dijaki, pokrajine_studenti, by = c("leto", "regija"))
 
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
