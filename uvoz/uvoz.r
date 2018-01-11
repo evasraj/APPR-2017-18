@@ -20,6 +20,7 @@ uvozi.dijaki <- function() {
 dijaki <- uvozi.dijaki()
 
 # Funkcija, ki uvozi število štipendistov glede na leto
+# Funkcija, ki uvozi stevilo stipendistov glede na leto
 uvozi.stipendist <- function(){
   drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
   zoisove <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 2, range = "A19:F26")
@@ -38,12 +39,16 @@ uvozi.stipendist <- function(){
   stipendije.skupaj <- rbind(drzavne, zoisove, kadrovske.posredne, kadrovske.neposredne) %>%
     mutate(stipendija = factor(stipendija))
   
-  stipendije <- stipendije.skupaj %>% select(leto, stipendija, povprecna, sredstva)
-  
-  stipendisti <- stipendije.skupaj %>% select(leto, stipendija, dijaki, studenti) %>%
-    melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
-  
+  return(stipendije.skupaj)
 }
+
+# Zapišimo podatke v razpredelnico stipendist
+stipendije_podatki <- uvozi.stipendist()
+stipendije <- stipendije_podatki %>% select(leto, stipendija, povprecna, sredstva)
+stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti) %>%
+  melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
+
+
 
 # Zapišimo podatke v razpredelnico stipendist
 stipendisti <- uvozi.stipendist()
@@ -63,6 +68,27 @@ uvozi.pokrajine <- function() {
 
 # Zapišimo podatke v razpredelnico pokrajine
 pokrajine <- uvozi.pokrajine()
+
+uvozi.pokrajine_dijaki <- function() {
+  data <- read_csv2("podatki/pokrajine_dijaki.csv", trim_ws = TRUE, na = c("-", ""),
+                    locale = locale(encoding = "Windows-1250"), skip = 5, n_max = 12, 
+                    col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))
+  return(data)
+}
+pokrajine_dijaki <- uvozi.pokrajine_dijaki()
+pokrajine_dijaki <- gather(pokrajine_dijaki, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "dijaki")
+
+uvozi.pokrajine_studenti <- function() {
+  data <- read_csv2("podatki/pokrajine_studenti.csv", trim_ws = TRUE, na = c("-", ""),
+                    locale = locale(encoding = "Windows-1250"), skip = 5, n_max = 12, 
+                    col_names = c("regija", 2008:2014))
+  return(data)
+}
+pokrajine_studenti <- uvozi.pokrajine_studenti()
+pokrajine_studenti <- gather(pokrajine_studenti, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "studenti")
+
+# pokrajine_skupaj <- inner_join(pokrajine_dijaki, pokrajine_studenti, by = c("leto", "regija"))
+
 
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
