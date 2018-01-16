@@ -2,9 +2,10 @@
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
-## Tematika
+## Analiza štipendiranja slovenskih dijakov in študentov
 
 V projektu bom obravnavala štipendiranje dijakov in študentov v Sloveniji.
+
 Prva tabela bo vsebovala podatke iz spletne strani: http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije.
 Prvi stolpec predstavlja leta (1996-2014), vsi nadaljnji stolpci pa vrsto štipendij (kadrovska, državna, Zoisova in druge).
 V tej tabeli bom opazovala, kako so se z leti spreminjali različne vrste štipendij. Za vsako izmed njih bom pogledala število dijakov, ki so štipendijo prejemali tekom leta.
