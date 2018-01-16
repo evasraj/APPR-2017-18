@@ -25,7 +25,7 @@ graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +
         panel.grid.minor = element_line(linetype = "dotted")) + 
   ggtitle("Povprečna višina štipendije po letih")
 
-# graf ptevila štipendistov v % po pokrajinah
+# graf števila štipendistov v % po pokrajinah
 graf4 <- ggplot(pokrajine_skupaj, aes(x = factor(leto), y = odstotek, fill = stipendisti)) +
   geom_bar(stat = "identity", position = "dodge") +
   xlab("Leto") + ylab("Odstotek") + guides(fill = guide_legend("Štipendisti")) +
