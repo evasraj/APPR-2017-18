@@ -1,8 +1,5 @@
 # 3. faza: Vizualizacija podatkov
 
-
-library(gridExtra)
-
 # graf števila dijakov glede na vrsto štipendije po letih
 graf1 <- ggplot(dijaki, aes(x = leto, y = stevilo, color = stipendija)) +
   geom_line(size = 1) +
@@ -54,4 +51,8 @@ zemljevid.studenti <- ggplot() +
                aes(x = long, y = lat, group = group, fill = odstotek))+
   ggtitle("Delež slovenskih študentov po pokrajinah")
 
-zemljevid.skupaj <- grid.arrange(zemljevid.dijaki, zemljevid.studenti, nrow = 1)
+zemljevid.skupaj <- ggplot() +
+  geom_polygon(data = pokrajine_skupaj %>% filter(leto == 2014) %>%
+                 right_join(zemljevid, by = c("regija" = "NAME_1")),
+               aes(x = long, y = lat, group = group, fill = odstotek)) +
+  facet_grid(~ stipendisti) + ggtitle("Delež štipendistov po pokrajinah")
