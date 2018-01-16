@@ -1,4 +1,4 @@
-# 2. faza: Uvoz podatkov
+# 2.faza: Uvoz podatkov
 
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 
@@ -49,10 +49,8 @@ stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti)
   melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
 
 
-
 # Zapišimo podatke v razpredelnico stipendist
 stipendisti <- uvozi.stipendist()
-
 
 # Funkcija, ki uvozi število štipendistov glede na pokrajine Slovenije
 uvozi.pokrajine <- function() {
@@ -69,34 +67,35 @@ uvozi.pokrajine <- function() {
 # Zapišimo podatke v razpredelnico pokrajine
 pokrajine <- uvozi.pokrajine()
 
-
+# Funkcija, ki uvozi število dijakov glede na pokrajine Slovenije po %
 uvozi.pokrajine_dijaki <- function() {
   data <- read_delim("podatki/pokrajine_dijaki.csv", delim = ";", trim_ws = TRUE, na = c("-", ""),
                      locale = locale(encoding = "Windows-1250", decimal_mark = "."),
-                     skip = 5, n_max = 12, 
-                     col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))  
+                     skip = 5, n_max = 12,
+                     col_names = c("regija", 2008:2014)) %>%
+    melt(id.vars = "regija", variable.name = "leto", value.name = "odstotek") %>%
+    mutate(leto = parse_number(leto))
   return(data)
 }
+
+# Zapišimo podatke v razpredelnico pokrajine_dijaki
 pokrajine_dijaki <- uvozi.pokrajine_dijaki()
 
-
+# Funkcija, ki uvozi število študentov glede na pokrajine Slovenije po %
 uvozi.pokrajine_studenti <- function() {
   data <- read_delim("podatki/pokrajine_studenti.csv", delim = ";", trim_ws = TRUE, na = c("-", ""),
                      locale = locale(encoding = "Windows-1250", decimal_mark = "."),
-                     skip = 5, n_max = 12, 
-                     col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))  
+                     skip = 5, n_max = 12,
+                     col_names = c("regija", 2008:2014)) %>%
+    melt(id.vars = "regija", variable.name = "leto", value.name = "odstotek") %>%
+    mutate(leto = parse_number(leto))
   return(data)
 }
+
+# Zapišimo podatke v razpredelnico pokrajine_studenti
 pokrajine_studenti <- uvozi.pokrajine_studenti()
 
-
+# Zapišimo podatke v razpredelnico pokrajine_skupaj
 pokrajine_skupaj <- rbind(pokrajine_dijaki %>% mutate(stipendisti = "dijaki"),
                           pokrajine_studenti %>% mutate(stipendisti = "studenti"))
-
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
-
 
