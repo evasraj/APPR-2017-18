@@ -26,13 +26,11 @@ graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +
   ggtitle("Povprečna višina štipendije po letih")
 
 # graf ptevila štipendistov v % po pokrajinah
-graf4 <- ggplot(pokrajine_skupaj, aes(x = factor(leto), y = odstotek, fill = c("odstotek.x", "odstotek.y"))) +
+graf4 <- ggplot(pokrajine_skupaj, aes(x = factor(leto), y = odstotek, fill = stipendisti)) +
   geom_bar(stat = "identity", position = "dodge") +
-  xlab("Leto") + ylab("Odstotek") +
+  xlab("Leto") + ylab("Odstotek") + guides(fill = guide_legend("Štipendisti")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ggtitle("Število štipendistov v % po pokrajinah")
-print(graf4) # ODSTOTEK NEKI NE DELA !!!
-
 
 # Uvozimo zemljevid
 gpclibPermit()

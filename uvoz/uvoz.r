@@ -69,26 +69,29 @@ uvozi.pokrajine <- function() {
 # Zapišimo podatke v razpredelnico pokrajine
 pokrajine <- uvozi.pokrajine()
 
+
 uvozi.pokrajine_dijaki <- function() {
-  data <- read_csv2("podatki/pokrajine_dijaki.csv", trim_ws = TRUE, na = c("-", ""),
-                    locale = locale(encoding = "Windows-1250"), skip = 5, n_max = 12, 
-                    col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))
+  data <- read_delim("podatki/pokrajine_dijaki.csv", delim = ";", trim_ws = TRUE, na = c("-", ""),
+                     locale = locale(encoding = "Windows-1250", decimal_mark = "."),
+                     skip = 5, n_max = 12, 
+                     col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))  
   return(data)
 }
 pokrajine_dijaki <- uvozi.pokrajine_dijaki()
-pokrajine_dijaki <- gather(pokrajine_dijaki, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "odstotek")
+
 
 uvozi.pokrajine_studenti <- function() {
-  data <- read_csv2("podatki/pokrajine_studenti.csv", trim_ws = TRUE, na = c("-", ""),
-                    locale = locale(encoding = "Windows-1250"), skip = 5, n_max = 12, 
-                    col_names = c("regija", 2008:2014))
+  data <- read_delim("podatki/pokrajine_studenti.csv", delim = ";", trim_ws = TRUE, na = c("-", ""),
+                     locale = locale(encoding = "Windows-1250", decimal_mark = "."),
+                     skip = 5, n_max = 12, 
+                     col_names = c("regija", "2008", "2009", "2010", "2011", "2012", "2013", "2014"))  
   return(data)
 }
 pokrajine_studenti <- uvozi.pokrajine_studenti()
-pokrajine_studenti <- gather(pokrajine_studenti, "2008", "2009", "2010", "2011", "2012", "2013", "2014", key = "leto", value = "odstotek")
 
-pokrajine_skupaj <- inner_join(pokrajine_dijaki, pokrajine_studenti, by = c("leto", "regija"))
 
+pokrajine_skupaj <- rbind(pokrajine_dijaki %>% mutate(stipendisti = "dijaki"),
+                          pokrajine_studenti %>% mutate(stipendisti = "studenti"))
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
