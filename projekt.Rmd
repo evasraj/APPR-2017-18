@@ -3,12 +3,11 @@ title: "Poročilo pri predmetu Analiza podatkov s programom R"
 subtitle: "Analiza štipendiranja slovenskih dijakov in študentov"
 author: "Eva Šraj"
 output:
-  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-
+  html_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
@@ -33,101 +32,51 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 source("vizualizacija/vizualizacija.r", encoding ="UTF-8")
 ```
 
-Podatke o štipendijah v Sloveniji sem uvozila v obliki CSV in v obliki HTML s Statističnega urada Republike Slovenije.
+Podatke sem uvozila iz:
+ [Inštituta RS za socialno varstvo](http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije) v obliki HTML, 
+ [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2) v obliki CSV,
+ [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2) v obliki CSV.
 
-## Tabela 1
+Podatki so prikazani v 5 razpredelnicah v obliki *tidy data*.
 
-Prva uvožena razpredelnica je v obliki HTML s spletne strani (http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije). Tabela prikazuje število različnih vrst štipendij (kadrovska, državna, Zoisova, druge), podeljene dijakom, med leti 1996 in 2014.
-
-Podatke v razpredelnici v obliki *tidy data*.
-
-Spremenljivke:
-- `dijaki` - podatki o številu  dijakov 
+1. TABELA: `dijaki` - podatki o številu  dijakov 
 - `leto` - spremenljivka: leta med 1996 in 2014 (numeric)
-- `stipendija` - spremenljivka:  vrsta štipendje (factor)
+- `stipendija` - spremenljivka:  vrsta štipendje (kadrovska, državna, Zoisova, druge) (factor)
 - `stevilo` - meritev: število dijakov glede na leto in vrsto štipendije (numeric).
 
-## Tabela 2
+```{r dijaki, echo=FALSE, message=FALSE}
+kable(head(dijaki), align="ccc")
+```
 
-Naslednji taqbeli sta je uvoženi iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2). Tabela prikazuje število štipendistov (dijaki, študenti) glede na vrsto štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) med leti 2010 in 2016. MANJKA!!!!!!!!!!
-
-Podatke v razpredelnici v obliki *tidy data*.
-
-Spremenljivke:
-- `stipendisti` - podatki o številu  štipendistov 
+2. TABELA: `stipendisti` - podatki o številu  štipendistov 
 - `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
-- `stevilo` - meritev: lštevilo štipendistov glede na leto in vrsto štipendije (numeric)
-- `dijaki` - meritev: število dijakov glede na leto in vrsto štipendije (numeric)
-- `studenti` - meritev: število število glede na leto in vrsto štipendije (numeric)
-- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+`stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (factor)
+- `stevilo` - meritev: število štipendistov glede na leto in vrsto štipendije (numeric)
 
-## Tabela 3
-Spremenljivke:
-- `stipendije` - podatki o višini štipendije in povprečnih porabljenih državnih sredstvih
+```{r stipendisti, echo=FALSE, message=FALSE}
+kable(head(stipendisti), align="cccc")
+```
+
+3. TABELA: `stipendije` - podatki o višini štipendije in povprečnih porabljenih državnih sredstvih
 - `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
 - `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
-- `povprecna` - meritev: višina štipendije glede na leto in vrsto štipendije (numeric)
+- `povprecna` - meritev: povprečna višina štipendije glede na leto in vrsto štipendije (numeric)
 - `sredstva` - meritev: povprečna porabljena državna sredstva glede na leto in vrsto štipendije (numeric)
 
-## Tabela 4
-Spremenljivke:
-- `pokrajine` - podatki o številu štipendistov po pokrajinah
-- `regija` - spremenljivka: slovenske pokrajine (character)
-- `stipenditor` - spremenljivka: dijak, študent (character)
+```{r stipendije, echo=FALSE, message=FALSE}
+kable(head(stipendije), align="cccc")
+```
 
-NI DOKONCA!!!!!!!!!!!!!!!!!
+4.TABELA: 
+`pokrajine_skupaj` - delež štipendistov po slovenskih pokrajinah
+- `regija` - spremenljivka: slovenske regije (Pomurska, Podravska, Koroška, Savinjska, Zasavska, Spodenjeposavska, Jugovzhodna SLovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška, Goriška, Obalno-kraška)(character)
+- `leto` - spremenljivka: leta med 2008 in 2014 (numeric)
+- `odstotek` - meritev: delež štipendistov glede leto in na pokrajino  (numeric)
+- `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (character)
 
-
-
-
-
-
-
-
-- `stipendija` - spremenljivka: dijak, študent (character)
-
-
-(državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
-- `povprecna` - meritev: višina štipendije glede na leto in vrsto štipendije (numeric)
-- `sredstva` - meritev: povprečna porabljena državna sredstva glede na leto in vrsto štipendije (numeric)
-
-
-
-4.TABELA: Število štipendistov po pokrajinah po letih 2008-2011
-- regija
-- štipenditor
-- vrsta štipendije
-- leto
-- število
-
-
-- `dijaki` - meritev: število dijakov glede na leto in vrsto štipendije (numeric)
-- `studenti` - meritev: število število glede na leto in vrsto štipendije (numeric)
-- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
-
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
-
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
-
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+```{r pokrajine_skupaj, echo=FALSE, message=FALSE}
+kable(head(pokrajine_skupaj), align="cccc")
 ```
 
 ***
@@ -138,37 +87,37 @@ ggplot(obcine, aes(x = naselja)) + geom_histogram() +
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Za naprednejšo analizo podatkov sem naredila 4 grafe in 1 zemljevid.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data = left_join(zemljevid, povprecja, by = c("OB_UIME" = "obcina")),
-                        aes(x = long, y = lat, group = group, fill = povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill = guide_colorbar(title = "Povprečje"))
+Prvi graf prikazuje, kako se je število dijakov spreminjalo glede na leto.
+```{r graf1 , echo=FALSE, message=FALSE, fig.align='center' }
+print(graf1)
+```
+Iz grafa lahko razberem, da je največ dijakov prejemalo državno štipendijo, njihovo število pa se je med leti tudi najbolj spreminjalo.
+
+Z drugim grafom sem ugotavljala, kako se je spreminjalo število prejemnikov državne štipendije med leti 2010 in 2016.
+```{r graf2 , echo=FALSE, message=FALSE, fig.align='center' }
+print(graf2)
+```
+Kot je razvidno iz grafa, se je število dijakov, ki so prejemali državno štipendijo bistveno bolj spreminjalo kot študentov. največja razlika je med letoma 2012 in 2013.
+
+Na tretjem grafu sem  primerjala višino posameznih vrst štipendij glede na leta 2010-2016.
+```{r graf3 , echo=FALSE, message=FALSE, fig.align='center' }
+print(graf3)
+```
+Višina neposrednih kadrovskih štipendij je nabolj naraščala, medtem ko imajo posredne kadrovske štipendije dokaj konstantno višino, okoli 300€ na posameznega štipendista.
+Višina državnih štipendij je najbolj narasla med letoom 2012 in 2014, po drugi strani pa je ravno med temi leti višina Zoisove štipendije najbolj upadla.
+
+Na četrtem grafu sem ugotavljala, kakšen je delež štipendistov glede na slovenske pokrajine.
+Omejila sem se na leto 2014.
+```{r graf4 , echo=FALSE, message=FALSE, fig.align='center' }
+print(graf4)
+```
+Iz zadnjega grafa lahko razberem, da je delež dijakov v slovenskih pokrajinah večji od deleža študentov. 
+
+Za konec sem naredila še zemljevid, ki še bolj nazorno prikazuje razliko med deležem dijakov in šteudentov glede na slovenske pokrajine.
+```{r zemljevid.skupaj, echo=FALSE, message=FALSE, fig.align='center'}
+print(zemljevid.skupaj)
 ```
 
 ***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina = names(skupine),
-                                     skupina = factor(skupine)), by = "obcina")
-, aes(x = povrsina, y = naselja, color = skupina, size = prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color = guide_legend(title = "Skupina"),
-         size = guide_legend(title = "Prebivalci (* 1000)"))
-```
-
-***
-
-```{r shiny, echo = FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```

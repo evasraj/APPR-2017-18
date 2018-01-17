@@ -11,7 +11,10 @@ library(readxl)
 library(tidyr)
 library(sp)
 library(maptools)
-
+library(rmarkdown)
+library(DT)
+library(digest)
+library(extrafont)
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
