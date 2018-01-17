@@ -19,7 +19,6 @@ uvozi.dijaki <- function() {
 # Zapišimo podatke v razpredelnico dijaki
 dijaki <- uvozi.dijaki()
 
-# Funkcija, ki uvozi število štipendistov glede na leto
 # Funkcija, ki uvozi število stipendistov glede na leto
 uvozi.stipendist <- function(){
   drzavne <- read_xlsx("podatki/stipendije_vse.xlsx", sheet = 1, range = "A1:F8")
@@ -47,7 +46,7 @@ stipendije_podatki <- uvozi.stipendist()
 stipendije <- stipendije_podatki %>% select(leto, stipendija, povprecna, sredstva)
 stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti) %>%
   melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
-
+stipendisti <- stipendisti[ , c(1:4,7)]
 
 # Zapišimo podatke v razpredelnico stipendist
 stipendisti <- uvozi.stipendist()

@@ -1,13 +1,14 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R!"
-author: "Študent FMF"
+title: "Poročilo pri predmetu Analiza podatkov s programom R"
+subtitle: "Analiza štipendiranja slovenskih dijakov in študentov"
+author: "Eva Šraj"
 output:
   html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-runtime: shiny
+
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
@@ -21,7 +22,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Izbrala sem si temo analiza štipendiranja slovenskih dijakov in študentov.
 
 ***
 
@@ -29,10 +30,80 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 
 ```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
+source("vizualizacija/vizualizacija.r", encoding ="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Podatke o štipendijah v Sloveniji sem uvozila v obliki CSV in v obliki HTML s Statističnega urada Republike Slovenije.
+
+## Tabela 1
+
+Prva uvožena razpredelnica je v obliki HTML s spletne strani (http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije). Tabela prikazuje število različnih vrst štipendij (kadrovska, državna, Zoisova, druge), podeljene dijakom, med leti 1996 in 2014.
+
+Podatke v razpredelnici v obliki *tidy data*.
+
+Spremenljivke:
+- `dijaki` - podatki o številu  dijakov 
+- `leto` - spremenljivka: leta med 1996 in 2014 (numeric)
+- `stipendija` - spremenljivka:  vrsta štipendje (factor)
+- `stevilo` - meritev: število dijakov glede na leto in vrsto štipendije (numeric).
+
+## Tabela 2
+
+Naslednji taqbeli sta je uvoženi iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2). Tabela prikazuje število štipendistov (dijaki, študenti) glede na vrsto štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) med leti 2010 in 2016. MANJKA!!!!!!!!!!
+
+Podatke v razpredelnici v obliki *tidy data*.
+
+Spremenljivke:
+- `stipendisti` - podatki o številu  štipendistov 
+- `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
+- `stevilo` - meritev: lštevilo štipendistov glede na leto in vrsto štipendije (numeric)
+- `dijaki` - meritev: število dijakov glede na leto in vrsto štipendije (numeric)
+- `studenti` - meritev: število število glede na leto in vrsto štipendije (numeric)
+- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+
+## Tabela 3
+Spremenljivke:
+- `stipendije` - podatki o višini štipendije in povprečnih porabljenih državnih sredstvih
+- `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
+- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `povprecna` - meritev: višina štipendije glede na leto in vrsto štipendije (numeric)
+- `sredstva` - meritev: povprečna porabljena državna sredstva glede na leto in vrsto štipendije (numeric)
+
+## Tabela 4
+Spremenljivke:
+- `pokrajine` - podatki o številu štipendistov po pokrajinah
+- `regija` - spremenljivka: slovenske pokrajine (character)
+- `stipenditor` - spremenljivka: dijak, študent (character)
+
+NI DOKONCA!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+- `stipendija` - spremenljivka: dijak, študent (character)
+
+
+(državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `povprecna` - meritev: višina štipendije glede na leto in vrsto štipendije (numeric)
+- `sredstva` - meritev: povprečna porabljena državna sredstva glede na leto in vrsto štipendije (numeric)
+
+
+
+4.TABELA: Število štipendistov po pokrajinah po letih 2008-2011
+- regija
+- štipenditor
+- vrsta štipendije
+- leto
+- število
+
+
+- `dijaki` - meritev: število dijakov glede na leto in vrsto štipendije (numeric)
+- `studenti` - meritev: število število glede na leto in vrsto štipendije (numeric)
+- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
 
 1. `druzine` - podatki o družinah za vsako občino
   - `obcina` - spremenljivka: ime občine (neurejen faktor),
