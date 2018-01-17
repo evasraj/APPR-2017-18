@@ -3,11 +3,11 @@ title: "Poročilo pri predmetu Analiza podatkov s programom R"
 subtitle: "Analiza štipendiranja slovenskih dijakov in študentov"
 author: "Eva Šraj"
 output:
+  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-  html_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
@@ -76,7 +76,7 @@ kable(head(stipendije), align="cccc")
 - `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (character)
 
 ```{r pokrajine_skupaj, echo=FALSE, message=FALSE}
-kable(head(pokrajine_skupaj), align="cccc")
+kable(head(pokrajine_skupaj),  align="cccc")
 ```
 
 ***
