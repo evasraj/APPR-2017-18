@@ -6,13 +6,14 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 V projektu bom obravnavala štipendiranje dijakov in študentov v Sloveniji.
 
-Podatki, porabljeni v projektu so:
+Podatki, ki sem jih uporabila v projektu so:
 * http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije
-*  http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2
-* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2
+* http://www.mddsz.gov.si/si/uveljavljanje_pravic/statistika/stipendiranje/
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0973010S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/03_09730_stipendisti_kazal/&lang=2
+* http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2.
 
 
-1.TABELA: Število dijakov glede na vrsto štipendije po letih 1996-2014
+1.TABELA: Število dijakov glede na vrsto štipendije po letih 2000-2014
 - leto
 - vrsta štipendije
 - število
@@ -27,7 +28,6 @@ Podatki, porabljeni v projektu so:
 - leto
 - vrsta štipendije
 - povprečna višina štipendije
-- porabljena državna sredstva
 
 4.TABELA: Število štipendistov po pokrajinah po letih 2008-2011
 - regija
@@ -41,16 +41,15 @@ Podatki, porabljeni v projektu so:
 - leto
 - štipendisti
 
-Poleg tabel projekt vsebuje še 4 grafe in 2 zemljevida in sicer:
+Poleg tabel projekt vsebuje še 4 grafe in zemljevid in sicer:
 - graf1 - Število dijakov glede na vrsto štipendije po letih
-- graf2 - Število štipendistov glede na leto
-- graf3 - Povprečna višina štipendije po letih
+- graf2 - Število štipendistov državne štipendije glede na leto
+- graf3 - Povprečni znesek štipendije po letih
 - graf4 - Število štipendistov v % po pokrajinah
-- zemljevid1 - Povprečno število slovenskih dijakov po regijah v %
-- zemljevid1 - Povprečno število slovenskih študentov po regijah v %
+- zemljevid - Delež štipendistov po pokrajinah
 
 Namen projekta je ugotoviti, kako se število štipendistov (dijaki, študentje) spreminja po letih glede na slovenske pokrajine in vrsto štipendij (kadrovske, državne, Zoisove, druge).
-Poleg tega bom analizirala še višino posamezne vrste štipendije glede na leto in porabljena državna sredstva za štipendiranje.
+Poleg tega bom analizirala še višino posamezne vrste štipendije glede na leto.
 
 ## Program
 
