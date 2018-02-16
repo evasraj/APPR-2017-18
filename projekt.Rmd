@@ -28,7 +28,6 @@ Za temo projekta sem si izbrala štipendiranje slovenskih dijakov in študentov.
 ![](slike/diploma.jpg)
 <center>
 
-
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
@@ -38,10 +37,7 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 source("vizualizacija/vizualizacija.r", encoding ="UTF-8")
 ```
 
-Podatke sem uvozila:
-- v obliki HTML iz [Inštituta RS za socialno varstvo](http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije)
-- v obliki XLSX iz [Ministrstva za delo, družino, socialne zadeve in enake možnosti](http://www.mddsz.gov.si/si/uveljavljanje_pravic/statistika/stipendiranje/)
-- v obliki CSV iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0973010S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/03_09730_stipendisti_kazal/&lang=2) in [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2).
+Podatke sem uvozila v obliki HTML iz [Inštituta RS za socialno varstvo](http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije), v obliki XLSX iz [Ministrstva za delo, družino, socialne zadeve in enake možnosti](http://www.mddsz.gov.si/si/uveljavljanje_pravic/statistika/stipendiranje/) ter v obliki CSV iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0973010S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/03_09730_stipendisti_kazal/&lang=2) in [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2).
 
 Podatki so prikazani v 4 razpredelnicah v obliki *tidy data*.
 
@@ -56,7 +52,7 @@ kable(head(dijaki), align="ccc")
 
 2. TABELA: `stipendisti` - podatki o številu  štipendistov 
 - `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
-`stipendija` - spremenljivka: vrsta štipendije (drzavna, zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `stipendija` - spremenljivka: vrsta štipendije (drzavna, zoisova, posredna kadrovska, neposredna kadrovska) (factor)
 - `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, studenti) (factor)
 - `stevilo` - meritev: število štipendistov glede na leto in vrsto štipendije (numeric)
 
@@ -75,13 +71,13 @@ kable(head(stipendije), align="ccc")
 ```
 
 4. TABELA: `pokrajine_skupaj` - delež štipendistov po slovenskih pokrajinah
-- `regija` - spremenljivka: slovenske regije (Pomurska, Podravska, Koroška, Savinjska, Zasavska, Spodenjeposavska, Jugovzhodna SLovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška, Goriška, Obalno-kraška)(character)
+- `regija` - spremenljivka: slovenske regije (Pomurska, Podravska, Koroška, Savinjska, Zasavska, Spodenjeposavska, Jugovzhodna Slovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška, Goriška, Obalno-kraška)(character)
 - `leto` - spremenljivka: leta med 2008 in 2014 (numeric)
 - `odstotek` - meritev: delež štipendistov glede leto in na pokrajino  (numeric)
 - `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (character)
 
 ```{r pokrajine_skupaj, echo=FALSE, message=FALSE}
-kable(head(pokrajine_skupaj), align="cccc")
+kable(head(pokrajine_skupaj))
 ```
 
 ***
@@ -94,19 +90,19 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Za naprednejšo analizo podatkov sem naredila 4 grafe in 1 zemljevid. 
 
-Iz prvega grafa vidimo, da se število štipendistov pri posameznih vrstah štipendije med seboj razlikuje. Največ dijakov je prejemalo državno štipendijo, precej manj pa zoisovo, kadrovsko in druge vrste štipendij. Število štipendistov državne štipendije je med letoma 2000 in 2007 konstantno upadalo, največji upad pa je bil leta 2012, ko je število prejemnikov padlo na 7780 dijakov. Razlog za tako velik upad je bila sprememba pogojev za pridobitev štipendije (VIR!).  Število prejemnikov Zoisove in kadrovske štipendije je tekom let ostalo konstanto. Najnižje število prejemnikov je pri drugih vrstah štipendije. V podatkih med slednje uvrščamo štipendijo Ad futura, med letoma 2010 in 2012 pa v to kategorijo uvrščamo tudi Erasmus štipendije.  Razlog za tako nizko število štipendistov je v tem, da letno podelijo zelo malo teh vrst štipendij. 
+Iz prvega grafa vidimo, da se število štipendistov pri posameznih vrstah štipendije med seboj razlikuje. Največ dijakov je prejemalo državno štipendijo, precej manj pa Zoisovo, kadrovsko in druge vrste štipendij. Število štipendistov državne štipendije je med letoma 2000 in 2007 konstantno upadalo, največji upad pa je bil leta 2012, ko je število prejemnikov padlo na 7780 dijakov. Razlog za tako velik upad je bila sprememba Zakona o uveljavljanju pravic iz javnih sredstev (ZUPJS). Bolj podrobne informacije glede tega zakonika so dostopne na spletni strani [Ministerstva za delo, družino in socialne zadeve](http://www.cirius-kamnik.si/uploads/cms/file/Irena3/Stipendije.pdf). Število prejemnikov Zoisove in kadrovske štipendije je tekom let ostalo konstanto. Najnižje število prejemnikov je pri drugih vrstah štipendije. V podatkih med slednje uvrščamo štipendijo Ad futura, med letoma 2010 in 2012 pa v to kategorijo spadajo tudi Erasmus štipendije. 
 
 ```{r graf1 , echo=FALSE, message=FALSE, fig.align='center' }
 print(graf1)
 ```
 
-Iz drugega grafa lahko razberemo kako se spreminja število dijakov in študentov, ki so prejemali državno štipendijo med letoma 2010 in 2016. Število dijakov, ki so prejemali štipendijo je tekom let bolj variiralo kot število študentov. Vidimo, da je z izjemo let 2012 in 2013, v povprečju več dijakov kot študentov prijemalo štipendijo. Med omenjenima letoma je prišlo tudi do največjega upada štipendiranih dijakov, medtem ko je v istem obdobju (leta 2012) število štipendiranih študentov naraslo. V letih od 2014 do 2016 je število dijakov, ki so prejemali državno štipendijo, v primerjavi z ostalimi let, naraslo. Razlog za to je bila verjetno že omenjena sprememba pogojev za pridobitev štipendije.  Število študentov pa je v enakem obdobju konstantno. 
+Iz drugega grafa lahko razberemo, kako se spreminja število dijakov in študentov, ki so prejemali državno štipendijo med letoma 2010 in 2016. Število dijakov, ki so prejemali štipendijo, je tekom let bolj variiralo kot število študentov. Vidimo, da je z izjemo let 2012 in 2013, v povprečju več dijakov kot študentov prijemalo štipendijo. Med omenjenima letoma je prišlo tudi do največjega upada štipendiranih dijakov, medtem ko je v istem obdobju (leta 2012) število štipendiranih študentov naraslo. V letih od 2014 do 2016 je število dijakov, ki so prejemali državno štipendijo, v primerjavi z ostalimi leti, naraslo. Razlog za to je bila verjetno že omenjena sprememba pogojev za pridobitev štipendije.  Število študentov pa je v enakem obdobju konstantno. 
 
 ```{r graf2 , echo=FALSE, message=FALSE, fig.align='center' }
 print(graf2)
 ```
 
-S tretjim grafom smo primerjali povprečne zneske posameznih vrst štipendij med leti 2010 in 2016. Vidimo, da je izmed vseh štipendij najbolj naraščala vrednost neposredne kadrovske štipendije, medtem ko so ostale vrste štipendij upadale. Neposredna kadrovska štipendija se od drugih vrst razlikuje potem, da razpis za pridobitev štipendije objavi javni sklad za območje cele Slovenije, višino štipendijo pa določi delodajalec. Posredne kadrovske štipendije pa razpisuje regionalna razvojna agencija (RRA), ki tudi določa višino le-te.  Višina posredne kadrovske štipendije je znašala v povprečju 300€ in je bila konstantna. Od leta 2014 dalje pa podatki o višini posredne kadrovske štipendije niso bili dostopni. Podrobnejše razlike med kadrovskima štipendijama lahko najdemo na spletnem naslovu [Računovodja.com](https://www.racunovodja.com/clanki.asp?clanek=4003/Razlike_med_programoma_Neposredne_kadrovske_stipendije_in_Posredne_kadrovske_stipendije_v_okviru_enotnih_regijskih_stipendijskih_shem). Višina zoisove štipendije je tekom let upadala, v zadnjih obdobju pa je konstantna. Državna štipendija, pri kateri je prihodek izmed vseh vrst štipendij najmanjši, je med leti 2010 in 2012 naraščala, v zadnjem obdobju pa upadla.
+S tretjim grafom smo primerjali povprečne zneske posameznih vrst štipendij med leti 2010 in 2016. Vidimo, da je izmed vseh štipendij najbolj naraščala vrednost neposredne kadrovske štipendije, medtem ko so ostale vrste štipendij upadale. Neposredna kadrovska štipendija se od drugih vrst razlikuje po tem, da razpis za pridobitev štipendije objavi javni sklad za območje cele Slovenije, višino štipendijo pa določi delodajalec. Posredne kadrovske štipendije pa razpisuje regionalna razvojna agencija (RRA), ki tudi določa višino le-te.  Višina posredne kadrovske štipendije je znašala v povprečju 300€ in je bila konstantna. Od leta 2014 dalje pa podatki o višini posredne kadrovske štipendije niso bili dostopni. Podrobnejše razlike med kadrovskima štipendijama lahko najdemo na spletnem naslovu [Računovodja.com](https://www.racunovodja.com/clanki.asp?clanek=4003/Razlike_med_programoma_Neposredne_kadrovske_stipendije_in_Posredne_kadrovske_stipendije_v_okviru_enotnih_regijskih_stipendijskih_shem). Višina zoisove štipendije je tekom let upadala, v zadnjih obdobju pa je konstantna. Državna štipendija, pri kateri je prihodek izmed vseh vrst štipendij najmanjši, je med leti 2010 in 2012 naraščala, v zadnjem obdobju pa upadla.
 
 ```{r graf3 , echo=FALSE, message=FALSE, fig.align='center' }
 print(graf3)
@@ -128,9 +124,9 @@ print(zemljevid.skupaj)
 # Povzetek
 
 Skozi analizo podatkov smo spoznali, da se državne štipendije pogosteje podeljujejo dijakom kot študentom. Kljub temu da je ta štipendija najpogosteje dodeljena, njena povprečna višina v zadnjih letih upada.  Sočasno neposredna kadrovska štipendija narašča. Tako pri dijakih kot tudi pri študentih največ štipendistov prihaja iz Podravske, Pomurske in Spodnjeposavske regije, najmanj pa iz Osrednjeslovenske in Obalno-kraške. Na področju štipendiranja dijakov se izmed vseh obravnavanih štipendij najpogosteje podeljuje državna.
-V prihodnje pričakujemo, da bo število študentov, ki prijemajo državne štipendije še naprej ostalo konstantno, število dijakov pa bo variiralo. Glede na povprečne zneske posameznih vrst štipendij vidimo tendenco k postopni rasti neposrednih kadrovskih in Zoisovih štipendij, državna pa bo najverjetneje upadla. Delež štipendiranih dijakov bo glede na slovenske pokrajine še naprej višji od deleža študentov. Moje mnenje je, da bi si morala Slovenija bolj prizadevati za financiranje dijakov in študentov, saj bi s tem štipendiste spodbujala, da bi se še bolj trudili za izredne dosežke. 
 
+V prihodnje pričakujemo, da bo število študentov, ki prijemajo državne štipendije še naprej ostalo konstantno, število dijakov pa bo variiralo. Glede na povprečne zneske posameznih vrst štipendij vidimo tendenco k postopni rasti neposrednih kadrovskih in Zoisovih štipendij, državna pa bo najverjetneje upadla. Delež štipendiranih dijakov bo glede na slovenske pokrajine še naprej višji od deleža študentov. 
 
-
+Moje mnenje je, da bi si morala Slovenija bolj prizadevati za financiranje dijakov in študentov, saj bi s tem štipendiste spodbujala, da bi se še bolj trudili za izredne dosežke in jih s tem tudi nagradila za njihov uspeh. 
 
 ***

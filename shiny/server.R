@@ -1,9 +1,7 @@
 library(shiny)
 
-function(input, output) {
-  
-  output$graf4_1 <- renderPlot({
-    graf.pokrajine <- ggplot(pokrajine_skupaj)
+shinyServer(function(input, output) {
+  output$druzine <- DT::renderDataTable({
     dcast(druzine, obcina ~ velikost.druzine, value.var = "stevilo.druzin") %>%
       rename(`Občina` = obcina)
   })

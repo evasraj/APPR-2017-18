@@ -28,7 +28,7 @@ graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +
 # graf števila štipendistov v % po pokrajinah
 graf4 <- ggplot(pokrajine_skupaj, aes(x = factor(regija), y = odstotek, fill = stipendisti)) +
   geom_bar(stat = "identity", position = "dodge") +
-  xlab("Leto") + ylab("Odstotek") + guides(fill = guide_legend("Štipendisti")) +
+  xlab("Pokrajina") + ylab("Odstotek") + guides(fill = guide_legend("Štipendisti")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ggtitle("Število štipendistov v % po pokrajinah")
 
