@@ -27,11 +27,11 @@ graf2_1 <- ggplot(stipendisti[8:14 & 34:40,], aes(x = factor(leto), y = stevilo,
 graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +
   geom_line(size = 1) +
   geom_point(size = 1.5) +
-  xlab("Leto") + ylab("Povprečna višina") +
+  xlab("Leto") + ylab("Znesek štipendije") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5),
         panel.grid.major = element_line(linetype = "dotted"),
         panel.grid.minor = element_line(linetype = "dotted")) +
-  ggtitle("Povprečna višina štipendije po letih")
+  ggtitle("Povprečni znesek štipendije po letih")
 
 # graf števila štipendistov v % po pokrajinah
 graf4 <- ggplot(pokrajine_skupaj, aes(x = factor(regija), y = odstotek, fill = stipendisti)) +

@@ -68,14 +68,14 @@ kable(head(stipendisti), align="cccc")
 kable(head(stipendije), align="cccc")
 ```
 
-4.TABELA: `pokrajine_skupaj` - delež štipendistov po slovenskih pokrajinah
+4. TABELA: `pokrajine_skupaj` - delež štipendistov po slovenskih pokrajinah
 - `regija` - spremenljivka: slovenske regije (Pomurska, Podravska, Koroška, Savinjska, Zasavska, Spodenjeposavska, Jugovzhodna SLovenija, Osrednjeslovenska, Gorenjska, Notranjsko-kraška, Goriška, Obalno-kraška)(character)
 - `leto` - spremenljivka: leta med 2008 in 2014 (numeric)
 - `odstotek` - meritev: delež štipendistov glede leto in na pokrajino  (numeric)
 - `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (character)
 
 ```{r pokrajine_skupaj, echo=FALSE, message=FALSE}
-kable(head(pokrajine_skupaj),  align="cccc")
+kable(head(pokrajine_skupaj))
 ```
 
 ***
