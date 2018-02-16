@@ -9,19 +9,11 @@ graf1 <- ggplot(dijaki, aes(x = leto, y = stevilo, color = stipendija)) +
   ggtitle("Število dijakov glede na vrsto štipendije po letih")
 
 # graf števila štipendistov glede na leto (za vse štipendije skupaj)
-graf2 <- ggplot(stipendisti[1:7 & 27:33,], aes(x = factor(leto), y = stevilo, fill = stipendisti)) +
+graf2 <- ggplot(stipendisti, aes(x = factor(leto), y = stevilo, fill = stipendisti)) +
   geom_bar(stat = "identity", position = "dodge") +
   xlab("Leto") + ylab("Število") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ggtitle("Število štipendistov državne štipendije glede na leto")
-
-
-# graf števila štipendistov glede na leto (za vse štipendije skupaj)
-graf2_1 <- ggplot(stipendisti[8:14 & 34:40,], aes(x = factor(leto), y = stevilo, fill = stipendisti)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  xlab("Leto") + ylab("Število") +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  ggtitle("Število štipendistov Zoisove štipendije glede na leto")
 
 # graf povprečne višine štipendije po letih
 graf3 <- ggplot(stipendije, aes(x = leto, y = povprecna, color =stipendija)) +

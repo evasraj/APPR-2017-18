@@ -8,7 +8,7 @@ uvozi.dijaki <- function() {
   stran <- html_session(link,
                         add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
   tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
-    .[[1]] %>% html_table(header = TRUE) %>% .[1:16, ] %>%
+    .[[1]] %>% html_table(header = TRUE) %>% .[2:16, ] %>%
     sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
   
   colnames(tabela) <- c("leto", "kadrovska", "drzavna", "zoisova", "druge")
