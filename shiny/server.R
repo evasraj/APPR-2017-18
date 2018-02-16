@@ -1,7 +1,8 @@
 library(shiny)
 
-shinyServer(function(input, output) {
-  output$druzine <- DT::renderDataTable({
+function(input, output) {
+  
+  output$graf1_1 <- renderPlot({
     dcast(druzine, obcina ~ velikost.druzine, value.var = "stevilo.druzin") %>%
       rename(`Občina` = obcina)
   })

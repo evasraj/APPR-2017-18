@@ -29,7 +29,6 @@ Za temo projekta sem si izbrala štipendiranje slovenskih dijakov in študentov.
 <center>
 
 
-
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
@@ -39,19 +38,16 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 source("vizualizacija/vizualizacija.r", encoding ="UTF-8")
 ```
 
-Podatke sem uvozila v obliki HTML iz [Inštituta RS za socialno varstvo](http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije) ter v obliki CSV iz SURS-a za [1.](link), [2.](link) in [3.](link) tabelo.
-
-
-
-
-* v obliki CSV iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954312S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2), [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0973010S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/03_09730_stipendisti_kazal/&lang=2), [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2).
- 
+Podatke sem uvozila:
+- v obliki HTML iz [Inštituta RS za socialno varstvo](http://www.irssv.si/demografija-3/2013-01-11-18-12-48/2013-01-11-18-12-59/stevilo-dijakov-prejemnikov-stipendij-glede-na-vrsto-stipendije)
+- v obliki XLSX iz [Ministrstva za delo, družino, socialne zadeve in enake možnosti](http://www.mddsz.gov.si/si/uveljavljanje_pravic/statistika/stipendiranje/)
+- v obliki CSV iz [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0973010S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/03_09730_stipendisti_kazal/&lang=2) in [Statističnega urada Republike Slovenije](http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=0954316S&ti=&path=../Database/Dem_soc/09_izobrazevanje/90_Arhiv/02_09543_stipendisti/&lang=2).
 
 Podatki so prikazani v 4 razpredelnicah v obliki *tidy data*.
 
 1. TABELA: `dijaki` - podatki o številu  dijakov 
-- `leto` - spremenljivka: leta med 1996 in 2014 (numeric)
-- `stipendija` - spremenljivka:  vrsta štipendje (kadrovska, državna, Zoisova, druge) (factor)
+- `leto` - spremenljivka: leta med 2000 in 2014 (numeric)
+- `stipendija` - spremenljivka:  vrsta štipendje (kadrovska, drzavna, zoisova, druge) (factor)
 - `stevilo` - meritev: število dijakov glede na leto in vrsto štipendije (numeric).
 
 ```{r dijaki, echo=FALSE, message=FALSE}
@@ -60,22 +56,22 @@ kable(head(dijaki), align="ccc")
 
 2. TABELA: `stipendisti` - podatki o številu  štipendistov 
 - `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
-`stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
-- `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (factor)
+`stipendija` - spremenljivka: vrsta štipendije (drzavna, zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, studenti) (factor)
 - `stevilo` - meritev: število štipendistov glede na leto in vrsto štipendije (numeric)
 
 ```{r stipendisti, echo=FALSE, message=FALSE}
 kable(head(stipendisti), align="cccc")
 ```
 
-3. TABELA: `stipendije` - podatki o višini štipendije in povprečnih porabljenih državnih sredstvih
+3. TABELA: `stipendije` - podatki o višini štipendije
 - `leto` - spremenljivka: leta med 2010 in 2016 (numeric)
-- `stipendija` - spremenljivka: vrsta štipendije (državna, Zoisova, posredna kadrovska, neposredna kadrovska) (factor)
+- `stipendija` - spremenljivka: vrsta štipendije (drzavna, zoisova, posredna kadrovska, neposredna kadrovska) (factor)
 - `povprecna` - meritev: povprečna višina štipendije glede na leto in vrsto štipendije (numeric)
-- `sredstva` - meritev: povprečna porabljena državna sredstva glede na leto in vrsto štipendije (numeric)
+
 
 ```{r stipendije, echo=FALSE, message=FALSE}
-kable(head(stipendije), align="cccc")
+kable(head(stipendije), align="ccc")
 ```
 
 4. TABELA: `pokrajine_skupaj` - delež štipendistov po slovenskih pokrajinah
@@ -85,9 +81,8 @@ kable(head(stipendije), align="cccc")
 - `stipendisti` - spremenljivka: vrsta štipendistov (dijaki, študenti) (character)
 
 ```{r pokrajine_skupaj, echo=FALSE, message=FALSE}
-kable(head(pokrajine_skupaj))
+kable(head(pokrajine_skupaj), align="cccc")
 ```
-
 
 ***
 

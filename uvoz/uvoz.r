@@ -43,13 +43,11 @@ uvozi.stipendist <- function(){
 
 # Zapišimo podatke v razpredelnico stipendist
 stipendije_podatki <- uvozi.stipendist()
-stipendije <- stipendije_podatki %>% select(leto, stipendija, povprecna, sredstva)
+stipendije <- stipendije_podatki %>% select(leto, stipendija, povprecna)
 stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti) %>%
   melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
 stipendisti <- stipendisti[ , c(1:4)]
 
-# Zapišimo podatke v razpredelnico stipendist
-# stipendisti <- uvozi.stipendist()
 
 # Funkcija, ki uvozi število štipendistov glede na pokrajine Slovenije
 uvozi.pokrajine <- function() {
