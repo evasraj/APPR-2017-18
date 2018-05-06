@@ -9,7 +9,7 @@ uvozi.dijaki <- function() {
                         add_headers("User-Agent" = "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:57.0) Gecko/20100101 Firefox/57.0"))
   tabela <- stran %>% read_html() %>% html_nodes(xpath="//table") %>%
     .[[1]] %>% html_table(header = TRUE) %>% .[2:16, ] %>%
-    sapply(parse_number, locale = locale(grouping_mark = " ")) %>% data.frame()
+    sapply(parse_number, locale = locale(grouping_mark = " "))  %>% data.frame()
   
   colnames(tabela) <- c("leto", "kadrovska", "drzavna", "zoisova", "druge")
   
@@ -35,7 +35,7 @@ uvozi.stipendist <- function(){
   kadrovske.posredne$stipendija <- "posredna kadrovska"
   kadrovske.neposredne$stipendija <- "neposredna kadrovska"
   
-  stipendije.skupaj <- rbind(drzavne, zoisove, kadrovske.posredne, kadrovske.neposredne) %>%
+  stipendije.skupaj <- rbind(drzavne, zoisove, kadrovske.posredne, kadrovske.neposredne) %>%  
     mutate(stipendija = factor(stipendija))
   
   return(stipendije.skupaj)
@@ -44,25 +44,9 @@ uvozi.stipendist <- function(){
 # Zapišimo podatke v razpredelnico stipendist
 stipendije_podatki <- uvozi.stipendist()
 stipendije <- stipendije_podatki %>% select(leto, stipendija, povprecna)
-stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti) %>%
+stipendisti <- stipendije_podatki %>% select(leto, stipendija, dijaki, studenti)  %>%
   melt(id.vars = c("leto", "stipendija"), variable.name = "stipendisti", value.name = "stevilo")
-stipendisti <- stipendisti[ , c(1:4)]
-
-
-# Funkcija, ki uvozi število štipendistov glede na pokrajine Slovenije
-uvozi.pokrajine <- function() {
-  data <- read_csv2("podatki/pokrajine.csv", trim_ws = TRUE, na = c("-", ""),
-                    locale = locale(encoding = "Windows-1250"), skip = 6,
-                    col_names = c("regija", "stipenditor", "stipendija", 2008:2011)) %>%
-    fill(1:2) %>% drop_na(3) %>% filter(! grepl("Skupaj", stipendija)) %>%
-    melt(id.vars = c("regija", "stipenditor", "stipendija"),
-         variable.name = "leto", value.name = "stevilo") %>%
-    mutate(leto = parse_number(leto), stevilo = parse_number(stevilo))
-  return(data)
-}
-
-# Zapišimo podatke v razpredelnico pokrajine
-pokrajine <- uvozi.pokrajine()
+# stipendisti <- stipendisti[ , c(1:4)]
 
 # Funkcija, ki uvozi število dijakov glede na pokrajine Slovenije po %
 uvozi.pokrajine_dijaki <- function() {
@@ -95,4 +79,3 @@ pokrajine_studenti <- uvozi.pokrajine_studenti()
 # Zapišimo podatke v razpredelnico pokrajine_skupaj
 pokrajine_skupaj <- rbind(pokrajine_dijaki %>% mutate(stipendisti = "dijaki"),
                           pokrajine_studenti %>% mutate(stipendisti = "studenti"))
-

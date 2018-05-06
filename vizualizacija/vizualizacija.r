@@ -56,4 +56,3 @@ zemljevid.skupaj <- ggplot() +
                  right_join(zemljevid, by = c("regija" = "NAME_1")),
                aes(x = long, y = lat, group = group, fill = odstotek)) +
   facet_grid(~ stipendisti) + ggtitle("Delež štipendistov po pokrajinah")
-
